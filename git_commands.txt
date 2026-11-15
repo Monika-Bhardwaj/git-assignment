@@ -1,0 +1,89 @@
+GIT COMMANDS USED IN THE ASSIGNMENT
+===================================
+
+mkdir git-assignment && cd git-assignment
+  - Creates the project folder and moves into it.
+
+git init -b main
+  - Initializes a new Git repository with "main" as the default branch.
+
+echo "<h1>Home</h1>" > index.html
+echo "<h1>About</h1>" > about.html
+  - Creates the two HTML files (index.html and about.html) with starter content.
+
+git add .
+  - Stages all new and modified files for the next commit.
+
+git commit -m "Initial commit: add index.html and about.html"
+  - Saves the staged files as the first commit, recording the initial project state.
+
+echo "<p>Welcome to my site</p>" >> index.html
+  - Appends a line to index.html (modifies the file).
+
+git add index.html
+  - Stages only the modified index.html.
+
+git commit -m "Update index.html with welcome text"
+  - Creates the second commit containing the modification.
+
+git branch feature
+  - Creates a new branch named "feature" at the current commit.
+
+git switch feature
+  - Switches the working directory to the "feature" branch.
+
+echo "<p>Our team</p>" >> about.html
+  - Modifies about.html while on the feature branch.
+
+git add about.html
+  - Stages the modified about.html.
+
+git commit -m "Add team section to about.html"
+  - Commits the change on the feature branch.
+
+git switch main
+  - Switches back to the main branch.
+
+git merge --no-ff feature -m "Merge feature branch into main"
+  - Merges feature into main and always creates a merge commit, so branch activity stays visible in history.
+
+git log --oneline --graph --all --decorate
+  - Displays the commit history as a compact graph across all branches.
+
+printf "*.log\ntemp/\n" > .gitignore
+  - Creates .gitignore that ignores all .log files and the temp/ folder.
+
+touch debug.log
+mkdir temp && echo "x" > temp/test.txt
+  - Creates a sample .log file and a temp/ folder to test the ignore rules.
+
+git status
+  - Shows the working tree state; debug.log and temp/ do not appear, proving they are ignored.
+
+git add .gitignore
+  - Stages the .gitignore file.
+
+git commit -m "Add .gitignore for .log files and temp/ folder"
+  - Commits the .gitignore file.
+
+echo "<p>Extra</p>" >> index.html
+git commit -am "Extra change to undo"
+  - Makes an additional change and commits it (-a stages tracked modified files, -m sets the message).
+
+git log --oneline
+  - Shows the history before the undo (includes the extra commit).
+
+git reset --hard HEAD~1
+  - Undoes the last commit and discards its changes from the working directory.
+
+git log --oneline
+  - Shows the history after the undo (extra commit is gone).
+
+git remote add origin https://github.com/<your-username>/<repo-name>.git
+  - Links the local repository to the public GitHub repository named "origin".
+
+git push -u origin main
+  - Pushes the main branch to GitHub and sets it as the upstream branch.
+
+git push origin feature
+  - Pushes the feature branch to GitHub so branch history is visible there.
